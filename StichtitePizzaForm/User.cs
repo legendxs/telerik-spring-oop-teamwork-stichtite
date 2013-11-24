@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace StichtitePizzaForm
 {
@@ -52,32 +61,38 @@ namespace StichtitePizzaForm
             }//else end
 
         }//method end
-        public void LogIn(string accountName, string password)
+        public static void LogIn(string accountName, string password)
         {
             bool isLogInCOrrect = false;
             using (StreamReader checkExisting = new StreamReader("Accounts.csv"))
             {
-
-                string[] accountCheck = checkExisting.ReadLine().Split(',');
-                if (accountCheck[0] == accountName&&accountCheck[1]==password)
-                {isLogInCOrrect = true;}
+                
+                    string[] accountCheck = checkExisting.ReadLine().Split(',');
+                    if (accountCheck[0] == accountName && accountCheck[1] == password)
+                    {
+                        isLogInCOrrect = true;
+                    }
+                
 
                 if (isLogInCOrrect)
                 {
-                    switch (accountCheck[3])
+                    switch (accountCheck[2])
                     {
                         case "Admin":
                             //Creates an instance of the Admin class by reading the proper values for the properties from the table with the admin accounts
                             AdminUser loggedAdmin = new AdminUser (accountCheck[0], accountCheck[1], AccountType.Admin, "will be read from table");
+                            MessageBox.Show("Log in successfull");
                             //checks wich line to read by account name
                             //is this even possible? or do we leave the method abstract and then have it implemented in 3 different ways in the sub classes?
                             //if it is, is it better ?
                             break;
                         case "Employee":
                             //see above
+                            MessageBox.Show("Log in successfull");
                             break;
                         case "Client":
                             //see above
+                            MessageBox.Show("Log in successfull");
                             break;
                         default:
                             //again do we need that or do we use it as a third option (enumeration)
@@ -86,7 +101,7 @@ namespace StichtitePizzaForm
                 }//if end
                 else
                 {
-                    //puts some error on the UI and calls the log in screen again
+                    MessageBox.Show("error");
                 }
             }//using end
         }//method end

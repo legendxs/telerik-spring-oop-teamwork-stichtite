@@ -7,7 +7,7 @@ namespace StichtitePizzaForm
 {
     interface IUser
     {
-        void LogIn(string accountName, string password);
+        //void LogIn(string accountName, string password);
         void EditAccInfo(string accountName, string password, AccountType type);
         //atributes will likly be changed
         void CreateAcc(string accountName, string password, AccountType type);

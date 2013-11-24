@@ -23,5 +23,17 @@ namespace StichtitePizzaForm
         {
             InitializeComponent();
         }
+
+        private void OnLogInClick(object sender, RoutedEventArgs e)
+        {
+            User.LogIn(Username.Text.ToString(), Password.Text.ToString());
+        }
+
+        private void OnRegisterClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        
     }
 }
