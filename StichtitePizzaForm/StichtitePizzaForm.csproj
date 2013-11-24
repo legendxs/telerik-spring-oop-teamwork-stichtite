@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="ClientUser.cs" />
     <Compile Include="EmployeeUser.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Products\Interfaces\IPizza.cs" />
     <Compile Include="Products\Interfaces\IProduct.cs" />
     <Compile Include="Products\TypesEnums\SauceType.cs" />
