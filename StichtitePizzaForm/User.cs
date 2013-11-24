@@ -17,47 +17,88 @@ namespace StichtitePizzaForm
 {
     abstract class User : IUser
     {
-        public void CreateAcc(string accountName, string password,AccountType type)
+        public static void CreateAcc(string accountName, string password,AccountType type, string adress, string phone)
         {
             bool doesAccountExist=false;
-            using (StreamReader checkExisting= new StreamReader("Accounts.csv"))
+            using (StreamReader checkExisting = new StreamReader("Accounts.csv"))
             {
-                
-               string[] accountCheck= checkExisting.ReadLine().Split(',');
-               if (accountCheck[0] == accountName)
-                   doesAccountExist = true;
+                string checkExistingLine = checkExisting.ReadLine();
+                string[] accountCheck = checkExistingLine.Split(',');
+                while (checkExistingLine!= null)
+                {
+                    accountCheck = checkExistingLine.Split(',');
+                    if (accountCheck[0] == accountName)
+                    {
+                    doesAccountExist = true;
+                    break;
+                    }
+                    checkExistingLine=checkExisting.ReadLine();
+                    
+                }
             }
             if (doesAccountExist)
-            {/*returns some error in the UI and puts up the account creation screen again*/}
+            { MessageBox.Show("Account with that name already exists. Please choose another"); }
             else
             {
+                
+                
                 StringBuilder accountInfo = new StringBuilder();
                 accountInfo.Append(accountName);
-                accountInfo.Append(";");
+                accountInfo.Append(",");
                 accountInfo.Append(password);
-                accountInfo.Append(";");
+                accountInfo.Append(",");
                 switch (type)
                 {
                     case AccountType.Admin:
                         accountInfo.Append("Admin");
-                        //creates an entry into the table with the admin accounts (what info will that table hold?)
+                        using (StreamWriter accountCreator= new StreamWriter("Accounts.csv",true))
+                        {
+                            accountCreator.WriteLine(accountInfo.ToString());
+                        }
+                        using (StreamWriter accountCreator=new StreamWriter("Admins.csv", true))
+                        {
+                            accountInfo.Clear();
+                            accountInfo.Append(accountName + "," + adress + "," + phone);
+                            accountCreator.WriteLine(accountInfo.ToString());
+                        }
+                        MessageBox.Show("Registration Sucsessfull");
                         break;
+
                     case AccountType.Employee:
                         accountInfo.Append("Employee");
-                        //creates an entry into the table with the employee accounts (what info will that table hold?)
+                        using (StreamWriter accountCreator = new StreamWriter("Accounts.csv", true))
+                        {
+                            accountCreator.WriteLine(accountInfo.ToString());
+                        }
+                        using (StreamWriter accountCreator = new StreamWriter("Employyes.csv", true))
+                        {
+                            accountInfo.Clear();
+                            accountInfo.Append(accountName + "," + adress + "," + phone+"0");
+                            accountCreator.WriteLine(accountInfo.ToString());
+                        }
+                        MessageBox.Show("Registration Sucsessfull");
                         break;
+
                     case AccountType.Client:
                         accountInfo.Append("Client");
-                        //creates an entry into the table with the client accounts (what info will that table hold?)
+                        using (StreamWriter accountCreator = new StreamWriter("Accounts.csv", true))
+                        {
+                            accountCreator.WriteLine(accountInfo.ToString());
+                        }
+                        using (StreamWriter accountCreator = new StreamWriter("Clients.csv", true))
+                        {
+                            accountInfo.Clear();
+                            accountInfo.Append(accountName + "," + adress + "," + phone);
+                            accountCreator.WriteLine(accountInfo.ToString());
+                        }
+                        MessageBox.Show("Registration Sucsessfull");
+                        //creates an entry into the table with the client accounts 
                         break;
                     default:
                         //some error message? can this even happen with enumeration?
                         break;
                 }
-                using (StreamWriter accountCreator=new StreamWriter("Accounts.csv"))
-                {
-                    accountCreator.WriteLine(accountInfo.ToString());
-                }
+                
             }//else end
 
         }//method end

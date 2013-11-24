@@ -10,7 +10,7 @@ namespace StichtitePizzaForm
         //void LogIn(string accountName, string password);
         void EditAccInfo(string accountName, string password, AccountType type);
         //atributes will likly be changed
-        void CreateAcc(string accountName, string password, AccountType type);
+        // void CreateAcc(string accountName, string password, AccountType type, string adress, string phone);
 
         /*
          * summary:

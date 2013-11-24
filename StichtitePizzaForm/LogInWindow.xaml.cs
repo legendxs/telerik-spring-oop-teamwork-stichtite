@@ -31,7 +31,9 @@ namespace StichtitePizzaForm
 
         private void OnRegisterClick(object sender, RoutedEventArgs e)
         {
-
+            Window registerWindow = new Register();
+            registerWindow.Show();
+            this.Close();
         }
 
         

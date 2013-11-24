@@ -8,8 +8,8 @@ namespace StichtitePizzaForm
 {
     public enum SauceType
     {
-        Marinara = 0.40,
-        Cream = 0.60,
-        Pesto = 0.40
+        Marinara = 40,
+        Cream = 0,
+        Pesto = 40
     }
 }
