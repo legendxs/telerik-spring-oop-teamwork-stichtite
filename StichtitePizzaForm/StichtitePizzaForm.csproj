@@ -53,6 +53,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ImageDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="LogInWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,12 +70,15 @@
     <Compile Include="ClientUser.cs" />
     <Compile Include="EmployeeUser.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="Products\Interfaces\IPizza.cs" />
-    <Compile Include="Products\Interfaces\IProduct.cs" />
-    <Compile Include="Products\TypesEnums\SauceType.cs" />
-    <Compile Include="Products\TypesEnums\ToppingType.cs" />
-    <Compile Include="Products\Pizza.cs" />
+    <Compile Include="Products\Group.cs" />
+    <Compile Include="Products\old_impl\Interfaces\IPizza.cs" />
+    <Compile Include="Products\old_impl\Interfaces\IProduct.cs" />
+    <Compile Include="Products\old_impl\TypesEnums\SauceType.cs" />
+    <Compile Include="Products\old_impl\TypesEnums\ToppingType.cs" />
+    <Compile Include="Products\old_impl\Pizza.cs" />
+    <Compile Include="Products\old_impl\Product.cs" />
     <Compile Include="Products\Product.cs" />
+    <Compile Include="Products\ProductList.cs" />
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
@@ -113,6 +120,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pizza-slice-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\tomato-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

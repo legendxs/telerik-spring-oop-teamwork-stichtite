@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Canvas Background="Azure">
-        <TextBox Name="Password" Height="23" Canvas.Left="199.164" TextWrapping="Wrap" Text="" Canvas.Top="229.507" Width="120"/>
         <TextBlock Canvas.Left="230.537" TextWrapping="Wrap" Text="Password" Canvas.Top="209"/>
-        <TextBox Name="Username" Height="23" Canvas.Left="199" TextWrapping="Wrap" Text="" Canvas.Top="181" Width="120" />
+        <PasswordBox x:Name="Password" Height="23" Canvas.Left="199.164"   Canvas.Top="229.507" Width="120"/>
         <TextBlock Canvas.Left="231" TextWrapping="Wrap" Text="Username" Canvas.Top="160"/>
         <Button Content="Log In" Canvas.Left="199" Canvas.Top="258" Width="59.104" Click="OnLogInClick"/>
         <Button Content="Register" Canvas.Left="263.039" Canvas.Top="258" Width="55.961" Click="OnRegisterClick"/>
+        <TextBox x:Name="Username" Height="23" Canvas.Left="199" Loaded="OnUsernameLoaded" TextWrapping="Wrap" Text="" Canvas.Top="181" Width="120" />
 
     </Canvas>
 </Window>

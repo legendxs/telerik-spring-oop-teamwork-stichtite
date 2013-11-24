@@ -4,10 +4,12 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using Example;
 
-namespace ExampleProductWpf
+namespace StichtitePizzaForm.Products
 {
+    /// <summary>
+    /// Contains all products available.
+    /// </summary>
     class ProductList
     {
         public List<Group> Products { get; private set; }
@@ -27,6 +29,8 @@ namespace ExampleProductWpf
         public ProductList()
         {
             const string ProductGroupName = "Products";
+
+            //Create some groups
             var groupNames = new string[] {
                 "Pizza",
                 "Soft drinks",
@@ -41,9 +45,12 @@ namespace ExampleProductWpf
                 groups.Add(item, new Group(item));
             }
 
+            //add some products
             var cheese = new Product(ProductGroupName, "Cheese", 0.83m);
             var tomato = new Product(ProductGroupName, "Tomato", 0.53m);
             var beacon = new Product(ProductGroupName, "Beacon", 1.33m);
+
+            //create pizza
             var pizzaWithCheese = new Product(groups["Pizza"].GroupName, "Cheese pizza", 5.0m, 1,
                 new List<Product>()
                 {
@@ -57,37 +64,38 @@ namespace ExampleProductWpf
             };
         }
 
-        public UIElement Render()
-        {
-            var itemsPanel = new UniformGrid();
-            itemsPanel.Rows = 2;
+        //TODO render the product list
+        //public UIElement Render()
+        //{
+        //    var itemsPanel = new UniformGrid();
+        //    itemsPanel.Rows = 2;
 
-            foreach (var item in Products)
-            {
-                Button button = (Button)item.Render();
-                button.Click += (sender, args) =>
-                {
-                    var window = new ListWindow();
-                    if (item.GetType() == typeof(Group))
-                    {
-                        window.Container.Children.Add(
-                            ProductList.GetByGroup(item.GroupName, Products).Render());
-                    }
-                    else
-                    {
-                        var product = item as Product;
-                        window.Container.Children.Add(product.Render());
-                        if (product.Recipe != null)
-                        {
-                            window.Container.Children.Add(new ProductList(product.Recipe).Render());
-                        }
-                    }
-                    window.Show();
-                };
-                itemsPanel.Children.Add(button);
-            }
-            return itemsPanel;
-        }
+        //    foreach (var item in Products)
+        //    {
+        //        Button button = (Button)item.Render();
+        //        button.Click += (sender, args) =>
+        //        {
+        //            var window = new ListWindow();
+        //            if (item.GetType() == typeof(Group))
+        //            {
+        //                window.Container.Children.Add(
+        //                    ProductList.GetByGroup(item.GroupName, Products).Render());
+        //            }
+        //            else
+        //            {
+        //                var product = item as Product;
+        //                window.Container.Children.Add(product.Render());
+        //                if (product.Recipe != null)
+        //                {
+        //                    window.Container.Children.Add(new ProductList(product.Recipe).Render());
+        //                }
+        //            }
+        //            window.Show();
+        //        };
+        //        itemsPanel.Children.Add(button);
+        //    }
+        //    return itemsPanel;
+        //}
 
         public static ProductList GetByGroup(string group, List<Group> products)
         {

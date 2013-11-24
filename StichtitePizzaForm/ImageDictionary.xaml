@@ -1,0 +1,5 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Image x:Key="GroupImage" Source="./Images/pizza-slice-icon.png" />
+    <Image x:Key="ProductImage" Source="./Images/tomato-icon.png" />
+</ResourceDictionary>
