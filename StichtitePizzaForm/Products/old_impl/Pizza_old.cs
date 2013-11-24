@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using StichtitePizzaForm.Products.old_impl.Interfaces;
+using StichtitePizzaForm.Products.old_impl.TypesEnums;
 
-namespace StichtitePizzaForm
+namespace StichtitePizzaForm.Products.old_impl
 {
-    public class Pizza : Product, IPizza
+    class Pizza_old : Product_old, IPizza
     {
         public const double Dough = 1;
         public SauceType Sauce { get; set; }

@@ -1,6 +1,7 @@
 ﻿namespace StichtitePizzaForm
 {
     using System.Collections.Generic;
+    using StichtitePizzaForm.Products;
 
     public class Order
     {
@@ -23,9 +24,9 @@
             this.Products.Clear();
         }
 
-        public double CalculateTotalPrice()
+        public decimal CalculateTotalPrice()
         {
-            double total = 0;
+            var total = 0m;
 
             foreach (var product in this.Products)
             {

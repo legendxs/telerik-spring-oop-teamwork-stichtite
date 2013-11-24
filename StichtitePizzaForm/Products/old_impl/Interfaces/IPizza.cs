@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using StichtitePizzaForm.Products.old_impl.TypesEnums;
 
-namespace StichtitePizzaForm
+namespace StichtitePizzaForm.Products.old_impl.Interfaces
 {
     public interface IPizza
     {

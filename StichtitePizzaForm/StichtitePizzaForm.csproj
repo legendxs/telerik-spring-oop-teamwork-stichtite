@@ -75,8 +75,8 @@
     <Compile Include="Products\old_impl\Interfaces\IProduct.cs" />
     <Compile Include="Products\old_impl\TypesEnums\SauceType.cs" />
     <Compile Include="Products\old_impl\TypesEnums\ToppingType.cs" />
-    <Compile Include="Products\old_impl\Pizza.cs" />
-    <Compile Include="Products\old_impl\Product.cs" />
+    <Compile Include="Products\old_impl\Pizza_old.cs" />
+    <Compile Include="Products\old_impl\Product_old.cs" />
     <Compile Include="Products\Product.cs" />
     <Compile Include="Products\ProductList.cs" />
     <Compile Include="Register.xaml.cs">

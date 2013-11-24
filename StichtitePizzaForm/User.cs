@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace StichtitePizzaForm
 {
@@ -131,9 +122,9 @@ namespace StichtitePizzaForm
                             //Creates an instance of the Admin class by reading the proper values for the properties from the table with the admin accounts
 
                             string adminTableLine;
-                            using (StreamReader AdminInfo = new StreamReader("Admins.csv"))
+                            using (StreamReader adminInfo = new StreamReader("Admins.csv"))
                             {
-                                adminTableLine = AdminInfo.ReadLine();
+                                adminTableLine = adminInfo.ReadLine();
                                 string[] adminCheck = adminTableLine.Split(',');
                                 while (adminTableLine != null)
                                 {

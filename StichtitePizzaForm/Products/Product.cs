@@ -6,7 +6,7 @@ using System.Windows.Controls;
 
 namespace StichtitePizzaForm.Products
 {
-    class Product : Group
+    public class Product : Group
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
