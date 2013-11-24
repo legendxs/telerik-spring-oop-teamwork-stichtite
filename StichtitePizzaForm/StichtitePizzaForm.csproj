@@ -86,11 +86,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Accounts.csv" />
+    <None Include="Admins.csv" />
+    <None Include="Clients.csv" />
+    <None Include="Employees.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="StichtitePizzaForm.vshost.exe.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="StichtitePizzaForm.exe" />
+    <Content Include="StichtitePizzaForm.pdb" />
+    <Content Include="StichtitePizzaForm.vshost.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
