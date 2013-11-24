@@ -64,14 +64,22 @@ namespace StichtitePizzaForm
         public static void LogIn(string accountName, string password)
         {
             bool isLogInCOrrect = false;
+            string phone = " ";
+            string adress = " ";
             using (StreamReader checkExisting = new StreamReader("Accounts.csv"))
             {
-                
-                    string[] accountCheck = checkExisting.ReadLine().Split(',');
+                string accountTableLine = checkExisting.ReadLine();
+                string[] accountCheck = accountTableLine.Split(',');
+                while (accountTableLine != null)
+                {
+                    accountCheck = accountTableLine.Split(',');
                     if (accountCheck[0] == accountName && accountCheck[1] == password)
                     {
                         isLogInCOrrect = true;
+                        break;
                     }
+                    accountTableLine = checkExisting.ReadLine();
+                }
                 
 
                 if (isLogInCOrrect)
@@ -80,19 +88,68 @@ namespace StichtitePizzaForm
                     {
                         case "Admin":
                             //Creates an instance of the Admin class by reading the proper values for the properties from the table with the admin accounts
-                            AdminUser loggedAdmin = new AdminUser (accountCheck[0], accountCheck[1], AccountType.Admin, "will be read from table");
-                            MessageBox.Show("Log in successfull");
-                            //checks wich line to read by account name
-                            //is this even possible? or do we leave the method abstract and then have it implemented in 3 different ways in the sub classes?
-                            //if it is, is it better ?
+
+                            string adminTableLine;
+                            using (StreamReader AdminInfo = new StreamReader("Admins.csv"))
+                            {
+                                adminTableLine = AdminInfo.ReadLine();
+                                string[] adminCheck = adminTableLine.Split(',');
+                                while (adminTableLine != null)
+                                {
+                                    if (adminCheck[0] == accountCheck[0])
+                                    {
+                                        adress = adminCheck[1];
+                                        phone = adminCheck[2];
+                                        break;
+                                    }
+                                }
+                            }
+                            AdminUser loggedAdmin = new AdminUser(accountCheck[0], accountCheck[1], AccountType.Admin,  adress,  phone);
+                            MessageBox.Show("Log in successfull" + loggedAdmin.AccountName + loggedAdmin.Adress + loggedAdmin.Phone);
                             break;
+
                         case "Employee":
-                            //see above
-                            MessageBox.Show("Log in successfull");
+                            string employeeTableLine;
+                            decimal earnings = 0;
+                            using (StreamReader employeeInfo = new StreamReader("Employees.csv"))
+                            {
+                                employeeTableLine = employeeInfo.ReadLine();
+                                string[] employeeCheck = employeeTableLine.Split(',');
+                                while (employeeTableLine != null)
+                                {
+                                    if (employeeCheck[0] == accountCheck[0])
+                                    {
+                                        adress = employeeCheck[1];
+                                        phone = employeeCheck[2];
+                                        earnings = Convert.ToDecimal(employeeCheck[3]);
+                                        break;
+                                    }
+                                }
+                            }
+                            EmployeeUser loggedEmployee = new EmployeeUser(accountCheck[0], accountCheck[1], AccountType.Employee, adress, phone, earnings);
+                            MessageBox.Show("Log in successfull" + loggedEmployee.AccountName + loggedEmployee.Adress + loggedEmployee.Phone + loggedEmployee.Earnings.ToString());
                             break;
                         case "Client":
                             //see above
-                            MessageBox.Show("Log in successfull");
+                            
+                            
+                            string clientTableLine;
+                            using (StreamReader clientInfo = new StreamReader("Clients.csv"))
+                            {
+                                clientTableLine = clientInfo.ReadLine();
+                                string [] clinetCheck = clientTableLine.Split(',');
+                                while (clientTableLine!=null)
+                                {
+                                    if (clinetCheck[0] == accountCheck[0])
+                                    {
+                                        adress = clinetCheck[1];
+                                        phone = clinetCheck[2];
+                                        break;
+                                    }
+                                }
+                            }
+                            ClientUser loggedClient = new ClientUser (accountCheck[0], accountCheck[1], AccountType.Client,  adress,  phone);
+                            MessageBox.Show("Log in successfull" + loggedClient.AccountName + loggedClient.Adress + loggedClient.Phone);
                             break;
                         default:
                             //again do we need that or do we use it as a third option (enumeration)

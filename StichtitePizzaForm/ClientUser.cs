@@ -10,14 +10,16 @@ namespace StichtitePizzaForm
         string accountName;
         string password;
         AccountType type;
-        string info;// or string[] info or string anem; string adress; string phone; etc.
+        string adress;
+        string phone;// or string[] info or string anem; string adress; string phone; etc.
 
-        public ClientUser (string accountName, string password, AccountType type, string info)
+        public ClientUser (string accountName, string password, AccountType type, string adress, string phone)
         {
             this.accountName = accountName;
             this.password = password;
             this.type = type;
-            this.info = info;
+            this.adress = adress;
+            this.phone = phone;
         }
 
         public string AccountName
@@ -38,10 +40,15 @@ namespace StichtitePizzaForm
             set { this.type = value; }
         }
 
-        public string Info
+        public string Adress
         {
-            get { return this.info; }
-            set { this.info = value; }
+            get { return this.adress; }
+            set { this.adress = value; }
+        }
+        public string Phone
+        {
+            get { return this.phone; }
+            set { this.phone = value; }
         }
 
         public override void EditAccInfo(string accountName, string password, AccountType type)
