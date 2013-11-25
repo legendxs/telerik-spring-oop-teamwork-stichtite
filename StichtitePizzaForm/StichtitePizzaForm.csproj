@@ -53,6 +53,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ClientWindowStart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ImageDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,6 +72,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ClientUser.cs" />
+    <Compile Include="ClientWindowStart.xaml.cs">
+      <DependentUpon>ClientWindowStart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeUser.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Products\Group.cs" />
