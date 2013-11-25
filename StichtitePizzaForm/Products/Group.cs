@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -95,6 +96,19 @@ namespace StichtitePizzaForm.Products
                 cloned = (Image)XamlReader.Load(xmlReader);
             }
             return cloned;
+        }
+
+        public static ProductList GetAllByGroup(string group, List<Group> products)
+        {
+            var result = new List<Group>();
+            foreach (var item in products)
+            {
+                if (item.GroupName.Equals(group))
+                {
+                    result.Add(item);
+                }
+            }
+            return new ProductList(result);
         }
     }
 }

@@ -76,7 +76,7 @@ namespace StichtitePizzaForm.Products
         //            if (item.GetType() == typeof(Group))
         //            {
         //                window.Container.Children.Add(
-        //                    ProductList.GetByGroup(item.GroupName, Products).Render());
+        //                    Group.GetAllByGroup(item.GroupName, Products).Render());
         //            }
         //            else
         //            {
@@ -94,17 +94,5 @@ namespace StichtitePizzaForm.Products
         //    return itemsPanel;
         //}
 
-        public static ProductList GetByGroup(string group, List<Group> products)
-        {
-            var result = new List<Group>();
-            foreach (var item in products)
-            {
-                if (item.GroupName.Equals(group))
-                {
-                    result.Add(item);
-                }
-            }
-            return new ProductList(result);
-        }
     }
 }
