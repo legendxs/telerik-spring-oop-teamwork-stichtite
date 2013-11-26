@@ -17,13 +17,16 @@ namespace StichtitePizzaForm
 
         private void OnLogInClick(object sender, RoutedEventArgs e)
         {
-            User.LogIn(Username.Text.ToString(), Password.Password.ToString());
+            if(User.LogIn(Username.Text.ToString(), Password.Password.ToString()))
+            {
+                this.Close();
+            }
+            
         }
 
         private void OnRegisterClick(object sender, RoutedEventArgs e)
         {
-            Window registerWindow = new Register();
-            registerWindow.Show();
+            (new Register()).Show();
             this.Close();
         }
 
@@ -32,6 +35,5 @@ namespace StichtitePizzaForm
             TextBox loginBox = sender as TextBox;
             loginBox.Focus();
         }
-
     }
 }

@@ -8,31 +8,30 @@ namespace StichtitePizzaForm
 {
     abstract class User : IUser
     {
-        public static void CreateAcc(string accountName, string password,AccountType type, string adress, string phone)
+        public static void CreateAcc(string accountName, string password, AccountType type, string adress, string phone)
         {
-            bool doesAccountExist=false;
+            bool doesAccountExist = false;
             using (StreamReader checkExisting = new StreamReader("Accounts.csv"))
             {
                 string checkExistingLine = checkExisting.ReadLine();
                 string[] accountCheck = checkExistingLine.Split(',');
-                while (checkExistingLine!= null)
+                while (checkExistingLine != null)
                 {
                     accountCheck = checkExistingLine.Split(',');
                     if (accountCheck[0] == accountName)
                     {
-                    doesAccountExist = true;
-                    break;
+                        doesAccountExist = true;
+                        break;
                     }
-                    checkExistingLine=checkExisting.ReadLine();
-                    
+                    checkExistingLine = checkExisting.ReadLine();
                 }
             }
             if (doesAccountExist)
-            { MessageBox.Show("Account with that name already exists. Please choose another"); }
+            {
+                MessageBox.Show("Account with that name already exists. Please choose another");
+            }
             else
             {
-                
-                
                 StringBuilder accountInfo = new StringBuilder();
                 accountInfo.Append(accountName);
                 accountInfo.Append(",");
@@ -42,11 +41,11 @@ namespace StichtitePizzaForm
                 {
                     case AccountType.Admin:
                         accountInfo.Append("Admin");
-                        using (StreamWriter accountCreator= new StreamWriter("Accounts.csv",true))
+                        using (StreamWriter accountCreator = new StreamWriter("Accounts.csv",true))
                         {
                             accountCreator.WriteLine(accountInfo.ToString());
                         }
-                        using (StreamWriter accountCreator=new StreamWriter("Admins.csv", true))
+                        using (StreamWriter accountCreator = new StreamWriter("Admins.csv", true))
                         {
                             accountInfo.Clear();
                             accountInfo.Append(accountName + "," + adress + "," + phone);
@@ -54,7 +53,6 @@ namespace StichtitePizzaForm
                         }
                         MessageBox.Show("Registration Sucsessfull");
                         break;
-
                     case AccountType.Employee:
                         accountInfo.Append("Employee");
                         using (StreamWriter accountCreator = new StreamWriter("Accounts.csv", true))
@@ -64,12 +62,11 @@ namespace StichtitePizzaForm
                         using (StreamWriter accountCreator = new StreamWriter("Employyes.csv", true))
                         {
                             accountInfo.Clear();
-                            accountInfo.Append(accountName + "," + adress + "," + phone+"0");
+                            accountInfo.Append(accountName + "," + adress + "," + phone + "0");
                             accountCreator.WriteLine(accountInfo.ToString());
                         }
                         MessageBox.Show("Registration Sucsessfull");
                         break;
-
                     case AccountType.Client:
                         accountInfo.Append("Client");
                         using (StreamWriter accountCreator = new StreamWriter("Accounts.csv", true))
@@ -89,13 +86,12 @@ namespace StichtitePizzaForm
                         //some error message? can this even happen with enumeration?
                         break;
                 }
-                
             }//else end
-
         }//method end
-        public static void LogIn(string accountName, string password)
+
+        public static bool LogIn(string accountName, string password)
         {
-            bool isLogInCOrrect = false;
+            bool isLogInCorrect = false;
             string phone = " ";
             string adress = " ";
             using (StreamReader checkExisting = new StreamReader("Accounts.csv"))
@@ -107,14 +103,13 @@ namespace StichtitePizzaForm
                     accountCheck = accountTableLine.Split(',');
                     if (accountCheck[0] == accountName && accountCheck[1] == password)
                     {
-                        isLogInCOrrect = true;
+                        isLogInCorrect = true;
                         break;
                     }
                     accountTableLine = checkExisting.ReadLine();
                 }
-                
 
-                if (isLogInCOrrect)
+                if (isLogInCorrect)
                 {
                     switch (accountCheck[2])
                     {
@@ -125,63 +120,74 @@ namespace StichtitePizzaForm
                             using (StreamReader adminInfo = new StreamReader("Admins.csv"))
                             {
                                 adminTableLine = adminInfo.ReadLine();
-                                string[] adminCheck = adminTableLine.Split(',');
+                                
                                 while (adminTableLine != null)
                                 {
+                                    string[] adminCheck = adminTableLine.Split(',');
                                     if (adminCheck[0] == accountCheck[0])
                                     {
                                         adress = adminCheck[1];
                                         phone = adminCheck[2];
+                                        AdminUser loggedAdmin = new AdminUser(accountCheck[0], accountCheck[1], AccountType.Admin, adress, phone);
+                                        // Open xaml form here
+                                        MessageBox.Show(String.Format("Log in successfull {0} {1} {2}", loggedAdmin.AccountName, loggedAdmin.Adress, loggedAdmin.Phone));
                                         break;
                                     }
+                                    adminTableLine = adminInfo.ReadLine();
                                 }
                             }
-                            AdminUser loggedAdmin = new AdminUser(accountCheck[0], accountCheck[1], AccountType.Admin,  adress,  phone);
-                            MessageBox.Show("Log in successfull" + loggedAdmin.AccountName + loggedAdmin.Adress + loggedAdmin.Phone);
                             break;
-
                         case "Employee":
                             string employeeTableLine;
                             decimal earnings = 0;
                             using (StreamReader employeeInfo = new StreamReader("Employees.csv"))
                             {
                                 employeeTableLine = employeeInfo.ReadLine();
-                                string[] employeeCheck = employeeTableLine.Split(',');
+
                                 while (employeeTableLine != null)
                                 {
+                                    string[] employeeCheck = employeeTableLine.Split(',');
                                     if (employeeCheck[0] == accountCheck[0])
                                     {
                                         adress = employeeCheck[1];
                                         phone = employeeCheck[2];
                                         earnings = Convert.ToDecimal(employeeCheck[3]);
+
+                                        EmployeeUser loggedEmployee = new EmployeeUser(accountCheck[0], accountCheck[1], AccountType.Employee, adress, phone, earnings);
+                                        // Open xaml form
+                                        MessageBox.Show(String.Format("Log in successfull {0} {1} {2} {3}", loggedEmployee.AccountName, loggedEmployee.Adress, loggedEmployee.Phone, loggedEmployee.Earnings.ToString()));
                                         break;
                                     }
+                                    employeeTableLine = employeeInfo.ReadLine();
                                 }
                             }
-                            EmployeeUser loggedEmployee = new EmployeeUser(accountCheck[0], accountCheck[1], AccountType.Employee, adress, phone, earnings);
-                            MessageBox.Show("Log in successfull" + loggedEmployee.AccountName + loggedEmployee.Adress + loggedEmployee.Phone + loggedEmployee.Earnings.ToString());
                             break;
                         case "Client":
                             //see above
-                            
                             
                             string clientTableLine;
                             using (StreamReader clientInfo = new StreamReader("Clients.csv"))
                             {
                                 clientTableLine = clientInfo.ReadLine();
-                                string [] clinetCheck = clientTableLine.Split(',');
-                                while (clientTableLine!=null)
+                                
+                                while (clientTableLine != null)
                                 {
+                                    string[] clinetCheck = clientTableLine.Split(',');
                                     if (clinetCheck[0] == accountCheck[0])
                                     {
                                         adress = clinetCheck[1];
                                         phone = clinetCheck[2];
+
+                                        ClientUser loggedClient = new ClientUser(accountCheck[0], accountCheck[1], AccountType.Client, adress, phone);
+                                        ClientWindowStart clientWindow = new ClientWindowStart();
+                                        clientWindow.Show();
+                                        MessageBox.Show(String.Format("Log in successfull {0} {1} {2} ", loggedClient.AccountName, loggedClient.Adress, loggedClient.Phone));
+
                                         break;
                                     }
+                                    clientTableLine = clientInfo.ReadLine();
                                 }
                             }
-                            ClientUser loggedClient = new ClientUser (accountCheck[0], accountCheck[1], AccountType.Client,  adress,  phone);
-                            MessageBox.Show("Log in successfull" + loggedClient.AccountName + loggedClient.Adress + loggedClient.Phone);
                             break;
                         default:
                             //again do we need that or do we use it as a third option (enumeration)
@@ -193,6 +199,7 @@ namespace StichtitePizzaForm
                     MessageBox.Show("error");
                 }
             }//using end
+            return isLogInCorrect;
         }//method end
 
         abstract public void EditAccInfo(string accountName, string password, AccountType type);
