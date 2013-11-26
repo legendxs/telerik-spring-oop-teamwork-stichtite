@@ -78,6 +78,7 @@
       <DependentUpon>ClientWindowStart.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmployeeUser.cs" />
+    <Compile Include="Interfaces\ICsvInteract.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Products\Group.cs" />
     <Compile Include="Products\old_impl\Interfaces\IPizza.cs" />
