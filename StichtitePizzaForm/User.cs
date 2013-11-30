@@ -183,8 +183,6 @@ namespace StichtitePizzaForm
                                         ClientUser loggedClient = new ClientUser(accountCheck[0], accountCheck[1], AccountType.Client, adress, phone);
                                         ClientWindowStart clientWindow = new ClientWindowStart();
                                         clientWindow.Show();
-                                        MessageBox.Show(String.Format("Log in successfull {0} {1} {2} ", loggedClient.AccountName, loggedClient.Adress, loggedClient.Phone));
-
                                         break;
                                     }
                                     clientTableLine = clientInfo.ReadLine();
