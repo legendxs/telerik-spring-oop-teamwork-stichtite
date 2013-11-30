@@ -3,10 +3,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using StichtitePizzaForm.Interfaces;
+using StichtitePizzaForm.CSVEditing;
 
 namespace StichtitePizzaForm
 {
-    abstract class User : IUser
+    abstract class User : IUser 
     {
         public static void CreateAcc(string accountName, string password, AccountType type, string adress, string phone)
         {
