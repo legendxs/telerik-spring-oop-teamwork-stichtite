@@ -55,11 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ClientWindowStart.xaml">
+    <Compile Include="Products\ObserveItems.cs" />
+    <Compile Include="Products\ProductList.cs" />
+    <Page Include="Clients\ClientWindowStart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EmployeeWindow.xaml">
+    <Page Include="Employees\EmployeeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -77,26 +79,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ClientUser.cs" />
-    <Compile Include="ClientWindowStart.xaml.cs">
+    <Compile Include="Clients\ClientUser.cs" />
+    <Compile Include="Clients\ClientWindowStart.xaml.cs">
       <DependentUpon>ClientWindowStart.xaml</DependentUpon>
     </Compile>
     <Compile Include="CSVEditing\CSVEditor.cs" />
-    <Compile Include="EmployeeUser.cs" />
-    <Compile Include="EmployeeWindow.xaml.cs">
+    <Compile Include="Employees\EmployeeUser.cs" />
+    <Compile Include="Employees\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ICsvInteract.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="Products\Group.cs" />
-    <Compile Include="Products\old_impl\Interfaces\IPizza.cs" />
-    <Compile Include="Products\old_impl\Interfaces\IProduct.cs" />
-    <Compile Include="Products\old_impl\TypesEnums\SauceType.cs" />
-    <Compile Include="Products\old_impl\TypesEnums\ToppingType.cs" />
-    <Compile Include="Products\old_impl\Pizza_old.cs" />
-    <Compile Include="Products\old_impl\Product_old.cs" />
-    <Compile Include="Products\Product.cs" />
-    <Compile Include="Products\ProductList.cs" />
+    <Compile Include="Products\ReadProducts.cs" />
+    <Compile Include="Products\Wrapper.cs" />
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
@@ -130,7 +124,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="Products\ProductDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

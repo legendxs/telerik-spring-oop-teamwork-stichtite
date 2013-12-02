@@ -156,7 +156,8 @@ namespace StichtitePizzaForm
                                         earnings = Convert.ToDecimal(employeeCheck[3]);
 
                                         EmployeeUser loggedEmployee = new EmployeeUser(accountCheck[0], accountCheck[1], AccountType.Employee, adress, phone, earnings);
-                                        // Open xaml form
+                                        EmployeeWindow employeeWindow = new EmployeeWindow();
+                                        employeeWindow.Show();
                                         MessageBox.Show(String.Format("Log in successfull {0} {1} {2} {3}", loggedEmployee.AccountName, loggedEmployee.Adress, loggedEmployee.Phone, loggedEmployee.Earnings.ToString()));
                                         break;
                                     }
