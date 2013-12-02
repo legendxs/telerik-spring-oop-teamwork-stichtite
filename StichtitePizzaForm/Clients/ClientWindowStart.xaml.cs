@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace StichtitePizzaForm
         public ClientWindowStart()
         {
             InitializeComponent();
+            this.DataContext = new Products.ProductList();
         }
     }
 }

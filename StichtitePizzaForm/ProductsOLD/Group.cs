@@ -98,7 +98,7 @@ namespace StichtitePizzaForm.Products
             return cloned;
         }
 
-        public static ProductList GetAllByGroup(string group, List<Group> products)
+        public static ProductListOld GetAllByGroup(string group, List<Group> products)
         {
             var result = new List<Group>();
             foreach (var item in products)
@@ -108,7 +108,7 @@ namespace StichtitePizzaForm.Products
                     result.Add(item);
                 }
             }
-            return new ProductList(result);
+            return new ProductListOld(result);
         }
     }
 }

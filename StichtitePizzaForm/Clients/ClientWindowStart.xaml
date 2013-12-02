@@ -1,0 +1,30 @@
+﻿<Window x:Class="StichtitePizzaForm.ClientWindowStart"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Client order" Height="500" Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ListBox Name="list" ItemsSource="{Binding Items}" Margin="4" SelectionMode="Extended">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Name="check" IsChecked="{Binding IsChecked, Mode=TwoWay}" Margin="3" VerticalAlignment="Center" />
+                        <ContentPresenter Content="{Binding Value}" Margin="1"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1" Grid.RowSpan="2">
+            <TextBlock FontWeight="Bold" >Selected Items</TextBlock>
+            <ItemsControl Margin="4"  x:Name="items" ItemsSource="{Binding Path=Items.CheckedItems}" DisplayMemberPath="Value" />
+        </StackPanel>
+
+    </Grid>
+</Window>

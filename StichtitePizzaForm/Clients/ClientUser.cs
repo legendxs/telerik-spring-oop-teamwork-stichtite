@@ -86,16 +86,17 @@ namespace StichtitePizzaForm
             throw new NotImplementedException();
             //log it? seems pointless for clients.
         }
-
-        public void ConfirmOrder (Order clientOrder) //the instance of the order class created by pressing the confirm order button
-        {
-            string[] orderInfo= new string[3];
-            orderInfo[0]=clientOrder.ToString();
-            orderInfo[1]=this.Adress;
-            orderInfo[2]=this.Phone;
-            CSVEditing.CSVEditor saveOrder = new CSVEditing.CSVEditor(orderInfo, "CurrentOrders.csv");
-            saveOrder.ArrayToLine(true);
-        }
+       
+        // Method from old products
+        //public void ConfirmOrder (Order clientOrder) //the instance of the order class created by pressing the confirm order button
+        //{
+        //    string[] orderInfo= new string[3];
+        //    orderInfo[0]=clientOrder.ToString();
+        //    orderInfo[1]=this.Adress;
+        //    orderInfo[2]=this.Phone;
+        //    CSVEditing.CSVEditor saveOrder = new CSVEditing.CSVEditor(orderInfo, "CurrentOrders.csv");
+        //    saveOrder.ArrayToLine(true);
+        //}
         /*
         * other methods for the client:
         * 
