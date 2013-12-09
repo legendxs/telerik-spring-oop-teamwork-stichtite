@@ -82,6 +82,7 @@
       <DependentUpon>ClientWindowStart.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clients\Customer.cs" />
+    <Compile Include="Clients\Dictionary.cs" />
     <Compile Include="Clients\Wrapper.cs" />
     <Compile Include="CSVEditing\CSVEditor.cs" />
     <Compile Include="Employees\EmployeeUser.cs" />

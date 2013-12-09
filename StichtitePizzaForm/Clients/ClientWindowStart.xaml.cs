@@ -5,12 +5,17 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Collections.Generic;
+using StichtitePizzaForm.Clients;
+using System.Linq;
 
 namespace StichtitePizzaForm
 {
     public partial class ClientWindowStart : Window
     {
         public ObservableCollection<Wrapper<MyCustomer>> Customers { get; set; }
+
+        List<TextBlock> selectedItems = new List<TextBlock>();
 
         public ClientWindowStart()
         {
@@ -40,7 +45,29 @@ namespace StichtitePizzaForm
                     TextBlock printTextBlock = new TextBlock();
                     printTextBlock.Text = item.ItemName;
                     pannel.Children.Add(printTextBlock);
+                    selectedItems.Add(printTextBlock);
                     item.IsAdded = true;
+                }
+            }
+        }
+
+        private void HandleUnChecker(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < selectedItems.Count; i++)
+            {
+                if ((sender as CheckBox).Content.ToString() == selectedItems[i].Text)
+                {
+                    pannel.Children.Remove(selectedItems[i]);
+                    foreach (var item in Customers)
+                    {
+                        if(item.ItemName == selectedItems[i].Text)
+                        {
+                            item.IsAdded = false;
+                            item.IsChecked = false;
+                            selectedItems.Remove(selectedItems[i]);
+                            break;
+                        }
+                    }
                 }
             }
         }

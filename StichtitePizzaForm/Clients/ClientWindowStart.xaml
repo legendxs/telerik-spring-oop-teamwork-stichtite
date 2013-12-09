@@ -10,7 +10,7 @@
         <ListBox ItemsSource="{Binding Customers}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <CheckBox  Name ="checker"  Checked="HandleChecker" IsChecked="{Binding IsChecked}" Content="{Binding Path=Item.Name}" />
+                    <CheckBox Checked="HandleChecker" Unchecked="HandleUnChecker" IsChecked="{Binding IsChecked}" Content="{Binding Path=Item.Name}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
@@ -24,6 +24,7 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+            <Label/>
         </StackPanel>
         <Button Content="Empty basket" Click ="EmptyBasket"  Grid.Column="1" HorizontalAlignment="Left" Margin="31,429,0,0" VerticalAlignment="Top" Width="77"/>
         <Button Content="Send order" Click="SendOrder" Grid.Column="1" HorizontalAlignment="Left" Margin="533,429,0,0" VerticalAlignment="Top" Width="77"/>
