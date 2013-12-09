@@ -64,7 +64,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="StichtitePizzaForm.CSVEditing.CSVEditor" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="StichtitePizzaForm.CSVEditing.CSVEditor" BaseTypeListCollapsed="true">
     <Position X="7.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAIAAABEAAAABAAAAAAAI=</HashCode>
@@ -79,7 +79,7 @@
       <FileName>Products\ObserveItems.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StichtitePizzaForm.Products.ProductList" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="StichtitePizzaForm.Products.ProductList" BaseTypeListCollapsed="true">
     <Position X="9.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAIAgAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
