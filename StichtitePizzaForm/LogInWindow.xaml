@@ -1,7 +1,7 @@
 ﻿<Window x:Class="StichtitePizzaForm.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" >
     <Canvas Background="Azure">
         <TextBlock Canvas.Left="230.537" TextWrapping="Wrap" Text="Password" Canvas.Top="209"/>
         <PasswordBox x:Name="Password" Height="23" Canvas.Left="199.164"   Canvas.Top="229.507" Width="120"/>

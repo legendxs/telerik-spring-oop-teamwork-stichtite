@@ -132,7 +132,7 @@ namespace StichtitePizzaForm
                                         phone = adminCheck[2];
                                         AdminUser loggedAdmin = new AdminUser(accountCheck[0], accountCheck[1], AccountType.Admin, adress, phone);
                                         // Open xaml form here
-                                        MessageBox.Show(String.Format("Log in successfull {0} {1} {2}", loggedAdmin.AccountName, loggedAdmin.Adress, loggedAdmin.Phone));
+                                        //MessageBox.Show(String.Format("Log in successfull {0} {1} {2}", loggedAdmin.AccountName, loggedAdmin.Adress, loggedAdmin.Phone));
                                         break;
                                     }
                                     adminTableLine = adminInfo.ReadLine();

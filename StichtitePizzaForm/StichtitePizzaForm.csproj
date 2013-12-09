@@ -55,8 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Products\ObserveItems.cs" />
-    <Compile Include="Products\ProductList.cs" />
     <Page Include="Clients\ClientWindowStart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,14 +81,14 @@
     <Compile Include="Clients\ClientWindowStart.xaml.cs">
       <DependentUpon>ClientWindowStart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Clients\Customer.cs" />
+    <Compile Include="Clients\Wrapper.cs" />
     <Compile Include="CSVEditing\CSVEditor.cs" />
     <Compile Include="Employees\EmployeeUser.cs" />
     <Compile Include="Employees\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ICsvInteract.cs" />
-    <Compile Include="Products\ReadProducts.cs" />
-    <Compile Include="Products\Wrapper.cs" />
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>

@@ -13,15 +13,17 @@ namespace StichtitePizzaForm
         public MainWindow()
         {
             InitializeComponent();
+
+            //(new ClientWindowStart()).Show();
+            //this.Close();
         }
 
         private void OnLogInClick(object sender, RoutedEventArgs e)
         {
-            if(User.LogIn(Username.Text.ToString(), Password.Password.ToString()))
+            if (User.LogIn(Username.Text.ToString(), Password.Password.ToString()))
             {
                 this.Close();
             }
-            
         }
 
         private void OnRegisterClick(object sender, RoutedEventArgs e)
