@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Collections.Generic;
-using StichtitePizzaForm.Clients;
 using System.Linq;
 
 namespace StichtitePizzaForm
@@ -60,7 +59,7 @@ namespace StichtitePizzaForm
                     pannel.Children.Remove(selectedItems[i]);
                     foreach (var item in Customers)
                     {
-                        if(item.ItemName == selectedItems[i].Text)
+                        if (item.ItemName == selectedItems[i].Text)
                         {
                             item.IsAdded = false;
                             item.IsChecked = false;
@@ -88,15 +87,16 @@ namespace StichtitePizzaForm
         private void SendOrder(object sender, RoutedEventArgs e)
         {
             StringBuilder result = new StringBuilder();
+        
+            foreach (var item in Customers)
+            {
+                if (item.IsAdded)
+                {
+                    result.AppendLine(item.ItemName.Replace(' ', ','));
+                }
+            }
             if (result.Length != 0)
             {
-                foreach (var item in Customers)
-                {
-                    if (item.IsAdded)
-                    {
-                        result.AppendLine(item.ItemName.Replace(' ', ','));
-                    }
-                }
                 using (StreamWriter writer = new StreamWriter("OrderList.csv", true))
                 {
                     writer.Write(result.ToString());

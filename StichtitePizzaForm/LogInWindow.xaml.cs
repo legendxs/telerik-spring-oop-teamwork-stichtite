@@ -13,9 +13,8 @@ namespace StichtitePizzaForm
         public MainWindow()
         {
             InitializeComponent();
-
-            (new ClientWindowStart()).Show();
-            this.Close();
+            //(new EmployeeWindow()).Show();
+            //this.Close();
         }
 
         private void OnLogInClick(object sender, RoutedEventArgs e)

@@ -1,19 +1,30 @@
 ﻿<Window x:Class="StichtitePizzaForm.EmployeeWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="EmployeeWindow" Height="500" Width="1000">
+        Title="Employee book" Height="500" Width="1280" WindowStartupLocation="CenterScreen">
     <Grid> 
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Avaliabble orders will be displayed below this" VerticalAlignment="Top" Height="32" Width="476"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Orders booked by the Employee will be listed below this" VerticalAlignment="Top" Height="32" Width="476"/>
-        <Button Content="Confirm Order As Compleated" Grid.Column="1" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top" Width="238" Height="60"/>
-        <Button Content="Discard Order" Grid.Column="1" HorizontalAlignment="Left" Margin="253,400,0,0" VerticalAlignment="Top" Width="233" Height="60"/>
-        <Button Content="Log Out" HorizontalAlignment="Left" Margin="253,400,0,0" VerticalAlignment="Top" Width="233" Height="60"/>
-        <Button Content="Book Order" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top" Width="238" Height="60"/>
-
-
+        <ListBox ItemsSource="{Binding Customers}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Checked="HandleChecker" Unchecked="HandleUnChecker" IsChecked="{Binding IsChecked}" Content="{Binding Path=Item.Name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Name="pannel" Grid.Column="1" Margin="5,0,-50,45">
+            <ItemsControl ItemsSource="{Binding}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}">
+                        </TextBlock>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Label/>
+        </StackPanel>
+        <Button Content="ConfirmOrder" Click="ConfirmOrder" Grid.Column="1" HorizontalAlignment="Left" Margin="376,389,0,0" VerticalAlignment="Top" Width="238" Height="60"/>
     </Grid>
 </Window>
